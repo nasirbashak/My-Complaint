@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "939090831356",
+    "firebase_url": "https://mycomplaint-2a14d.firebaseio.com",
+    "project_id": "mycomplaint-2a14d",
+    "storage_bucket": "mycomplaint-2a14d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939090831356:android:56cb10ca48eba482",
+        "android_client_info": {
+          "package_name": "e.nasirbashak007.mycomplaint"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939090831356-aqd9dq5l66fn9j0puo373ra5b5mdtiqk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "e.nasirbashak007.mycomplaint",
+            "certificate_hash": "5e95cbf1cfb95fec6eca8ab9ec04224beb00c40a"
+          }
+        },
+        {
+          "client_id": "939090831356-pp4t65hs89mebh60smtltgcncvrrqdih.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq7kBasKaKgZzndjc3tUlnCnM5hCjw4VQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939090831356-pp4t65hs89mebh60smtltgcncvrrqdih.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
