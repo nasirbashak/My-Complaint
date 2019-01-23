@@ -17,26 +17,25 @@ package e.nasirbashak007.mycomplaint;
 
 public class Complaint {
 
-    private String text;
     private String name;
+    private String category;
+    private String date;
+    private String desc;
     private String photoUrl;
 
     public Complaint() {
     }
 
-    public Complaint(String text, String name, String photoUrl) {
-        this.text = text;
+    public Complaint(String name, String category,String date,String desc, String photoUrl) {
+
         this.name = name;
+        this.category = category;
+        this.date = date;
+        this.desc= desc;
         this.photoUrl = photoUrl;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
+    
 
     public String getName() {
         return name;
