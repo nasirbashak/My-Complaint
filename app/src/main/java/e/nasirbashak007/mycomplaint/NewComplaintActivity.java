@@ -77,6 +77,7 @@ public class NewComplaintActivity extends AppCompatActivity {
                  ArrayList<String> myCats = new ArrayList<>();
                  ArrayList<String> myDescs = new ArrayList<>();
                  ArrayList<String> myVicNames = new ArrayList<>();
+                 ArrayList<String> myKeys = new ArrayList<>();
 
 
 
@@ -95,8 +96,9 @@ public class NewComplaintActivity extends AppCompatActivity {
                     myDates.add(c.getDate());
                     myCats.add(c.getCategory());
                     myVicNames.add(c.getVicNameame());
+                    myKeys.add(c.getKey());
 
-                    recyclerView.setAdapter(new RecyclerViewAdapter(context,myNames,myCats,myDates,myVicNames,myDescs));
+                    recyclerView.setAdapter(new RecyclerViewAdapter(context,myKeys,myNames,myCats,myDates,myVicNames,myDescs));
 
                 }
 

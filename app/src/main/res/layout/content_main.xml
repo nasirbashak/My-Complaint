@@ -20,11 +20,11 @@
         android:text="@string/txt1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.086"
+        app:layout_constraintHorizontal_bias="0.031"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.08" />
-
+        app:layout_constraintVertical_bias="0.079" />
+    <!--
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="178dp"
@@ -39,24 +39,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.078" />
-
+    -->
     <EditText
         android:id="@+id/editTextCat"
-        android:layout_width="172dp"
-        android:layout_height="37dp"
+        android:layout_width="186dp"
+        android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
+        android:hint="robbery/missing/harrasment"
+        android:importantForAutofill="no"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.154"
-        android:importantForAutofill="no" />
+        app:layout_constraintVertical_bias="0.054" />
 
     <TextView
         android:id="@+id/textViewDate"
@@ -69,10 +70,10 @@
         android:text="@string/txt2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.343"
+        app:layout_constraintHorizontal_bias="0.289"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.204" />
 
     <EditText
         android:id="@+id/editTextDate"
@@ -85,13 +86,13 @@
         android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/txtDate"
+        android:hint="24/01/2019"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.839"
+        app:layout_constraintHorizontal_bias="0.818"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.238" />
+        app:layout_constraintVertical_bias="0.189" />
 
     <EditText
         android:id="@+id/editTextDesc"
@@ -103,6 +104,7 @@
         android:layout_marginBottom="8dp"
         android:autofillHints=""
         android:ems="10"
+        android:textAlignment="center"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -158,7 +160,7 @@
         app:layout_constraintHorizontal_bias="0.235"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        app:layout_constraintVertical_bias="0.319" />
 
     <EditText
         android:id="@+id/editTextVicName"
@@ -168,16 +170,16 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/otherstxt"
+        android:hint="some name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.814"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.354"
-        android:autofillHints="" />
+        app:layout_constraintVertical_bias="0.3" />
 
     <ImageView
         android:id="@+id/textView5"

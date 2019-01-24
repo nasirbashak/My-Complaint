@@ -17,6 +17,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:text="Canada"
+        android:onClick="ClearTheComplaint"
         android:textSize="20sp"
         android:textColor="#000"
         />

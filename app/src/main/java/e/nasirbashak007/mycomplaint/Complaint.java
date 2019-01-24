@@ -24,11 +24,16 @@ public class Complaint {
     private String desc;
     private String photoUrl;
 
+    private String key;
+    private String status;
+
     public Complaint() {
     }
 
-    public Complaint(String name, String category,String date,String vicName,String desc, String photoUrl) {
+    public Complaint(String key,String status,String name, String category,String date,String vicName,String desc, String photoUrl) {
 
+        this.key = key;
+        this.status= status;
         this.name = name;
         this.category = category;
         this.date = date;
@@ -36,6 +41,23 @@ public class Complaint {
         this.desc= desc;
         this.photoUrl = photoUrl;
     }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 
 
 

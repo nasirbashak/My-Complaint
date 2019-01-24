@@ -1,6 +1,7 @@
 package e.nasirbashak007.mycomplaint;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -35,7 +36,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.susmit.mailsender.MailSender;
 
 import org.w3c.dom.Text;
 
@@ -50,6 +53,9 @@ public class MainActivity extends AppCompatActivity
     EditText eTextCat,eTextDate,eTextVicName,eTextDesc;
     Spinner spinner;
     Button button;
+    String key;
+
+    String sendersAddress,sendersAccPassword,receiversAddr,subject,content;
 
 
 
@@ -75,6 +81,10 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         init();
 
+        sendersAddress = "nasirbashak007@gmail.com";
+        sendersAccPassword = "#Nasir@1997";
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -84,7 +94,7 @@ public class MainActivity extends AppCompatActivity
 
 
 
-            setEnable(false);
+            //setEnable(false);
             //setContentView(R.layout.activity_new_complaint);
 
 
@@ -115,8 +125,16 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                  //      .setAction("Action", null).show();
+
+                String num = "8722086222";
+
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel",num,null)));
+
+
+
+
             }
         });
 
@@ -141,6 +159,7 @@ public class MainActivity extends AppCompatActivity
                 if(firebaseUser != null){
 
                     Toast.makeText(getApplicationContext(),"You are signed in",Toast.LENGTH_SHORT).show();
+                    receiversAddr = firebaseUser.getEmail();
                     onSignedInInitialise(firebaseUser.getDisplayName());
 
                 }else{
@@ -324,8 +343,11 @@ public class MainActivity extends AppCompatActivity
             setEnable(true);
 
 
-        }else if(id == R.id.nav_newComp){
+        }else if(id == R.id.nav_compStatus){
+
             Toast.makeText(getApplicationContext(),"Status of old complaint",Toast.LENGTH_SHORT).show();
+
+            startActivity(new Intent(this, ComplaintStatus.class));
 
         }
 
@@ -350,7 +372,10 @@ public class MainActivity extends AppCompatActivity
 
         //myRef.push().setValue(friendlyMessage);
 
-        Complaint complaint = new Complaint(mUsername,cat,date,vicName,desc,null);
+        String randKey = new RandomKey().randomAlphaNumeric(3);
+        key = randKey;
+
+        Complaint complaint = new Complaint(randKey,"pending",mUsername,cat,date,vicName,desc,null);
         myDatabaseReference.push().setValue(complaint).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
@@ -364,12 +389,27 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+
+        myDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+               // Toast.makeText(getApplicationContext(),"key "+key,Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         myDatabaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                String key = dataSnapshot.getKey();
-                Toast.makeText(getApplicationContext(),"key "+key,Toast.LENGTH_SHORT).show();
+                 //key = dataSnapshot.getKey();
+                //Toast.makeText(getApplicationContext(),"key "+key,Toast.LENGTH_SHORT).show();
 
 
 
@@ -397,6 +437,13 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        Toast.makeText(getApplicationContext(),"key2 "+key,Toast.LENGTH_SHORT).show();
+
+        content = "Dear "+ mUsername +" thanks for utilizing our E- services for registering your complaint online\n" +
+                "Your reference number is "+key+" save this for future tracking of your complaint status";
+
+        new MailSender(sendersAddress, sendersAccPassword).sendMailAsync(receiversAddr, "My Complaint App", content);
+        Toast.makeText(getApplicationContext(),"An Email has been sent to your registered mail id",Toast.LENGTH_SHORT).show();
 
 
         startActivity(new Intent(this,NewComplaintActivity.class));
@@ -420,7 +467,7 @@ public class MainActivity extends AppCompatActivity
         eTextVicName= (EditText)findViewById(R.id.editTextVicName);
         eTextDesc= (EditText)findViewById(R.id.editTextDesc);
 
-        spinner = (Spinner)findViewById(R.id.spinner);
+       // spinner = (Spinner)findViewById(R.id.spinner);
         button = (Button)findViewById(R.id.buttonSubmit);
 
 
@@ -438,7 +485,7 @@ public class MainActivity extends AppCompatActivity
         eTextVicName.setEnabled(b);
         eTextDesc.setEnabled(b);
 
-        spinner.setEnabled(b);
+        //spinner.setEnabled(b);
         button.setEnabled(b);
 
 

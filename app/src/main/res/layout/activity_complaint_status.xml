@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ComplaintStatus">
+
+
+
+
+    <EditText
+        android:layout_marginTop="50dp"
+        android:padding="15dp"
+        android:id="@+id/editTextKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_marginTop="250dp"
+        android:textSize="16dp"
+        android:textColor="#000"
+        android:hint="status"
+        android:textAlignment="center"
+        android:id="@+id/textStatus"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
+
+    <Button
+        android:padding="15dp"
+        android:text="submit"
+        android:onClick="status"
+        android:layout_marginLeft="150dp"
+            android:layout_alignBottom="@+id/textStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+
+
+</RelativeLayout>

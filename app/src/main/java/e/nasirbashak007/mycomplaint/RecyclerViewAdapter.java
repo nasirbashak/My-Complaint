@@ -29,6 +29,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<String> myCats = new ArrayList<>();
     private ArrayList<String> myDescs = new ArrayList<>();
     private ArrayList<String> myVicNames = new ArrayList<>();
+    private ArrayList<String> myKeys = new ArrayList<>();
 
 
     private Context mContext;
@@ -45,7 +46,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     }
 
-    public RecyclerViewAdapter(Context context, ArrayList<String> myNames, ArrayList<String> myCats,
+    public RecyclerViewAdapter(Context context,ArrayList<String> myKeys,ArrayList<String> myNames, ArrayList<String> myCats,
                                ArrayList<String> myDates, ArrayList<String> myVicNames,
                                ArrayList<String> myDescs) {
 
@@ -55,6 +56,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.myDates = myDates;
         this.myVicNames = myVicNames;
         this.myDescs = myDescs;
+        this.myKeys = myKeys;
 
 
     }
@@ -92,6 +94,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("myDates", myDates.get(position));
                 intent.putExtra("myVicNames", myVicNames.get(position));
                 intent.putExtra("myDescs", myDescs.get(position));
+                intent.putExtra("myKeys", myKeys.get(position));
 
 
                 mContext.startActivity(intent);
