@@ -14,15 +14,41 @@ __First the passenger should Sign in either through gooogle or email. and then t
 
 
 <img src="https://github.com/nasirbashak/My-Complaint/blob/master/Screenshots/ss1.jpeg"/>
-The authorized user 
+
+
+<a href="https://github.com/nasirbashak/My-Complaint.git">SignUp</a>
+
 
 <img src="https://github.com/nasirbashak/My-Complaint/blob/master/Screenshots/ss2.jpeg"/>"/>
 
+
+
+<a href="https://github.com/nasirbashak/My-Complaint/blob/master/app/src/main/java/e/nasirbashak007/mycomplaint/Complaint.java">SubmitComplaint</a>
+
+
+
 <img src="https://github.com/nasirbashak/My-Complaint/blob/master/Screenshots/ss3.jpeg"/>"/>
+
+
+
+<a href="https://github.com/nasirbashak/My-Complaint/blob/master/app/src/main/res/layout/activity_main.xml">Navigator</a>
+
+
 
 <img src="https://github.com/nasirbashak/My-Complaint/blob/master/Screenshots/ss4.jpeg"/>"/>
 
+
+
+<a href="https://github.com/nasirbashak/My-Complaint/blob/master/app/src/main/java/e/nasirbashak007/mycomplaint/GalleryActivity.java">ViewComplaint</a>
+
+
+
 <img src="https://github.com/nasirbashak/My-Complaint/blob/master/Screenshots/ss5.jpeg"/>"/>
+
+
+
+
+<a href="https://github.com/nasirbashak/My-Complaint/blob/master/app/src/main/java/e/nasirbashak007/mycomplaint/ComplaintStatus.java">Notification</a>
 
 
 
