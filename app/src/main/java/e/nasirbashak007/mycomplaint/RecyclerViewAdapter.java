@@ -95,6 +95,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 intent.putExtra("myVicNames", myVicNames.get(position));
                 intent.putExtra("myDescs", myDescs.get(position));
                 intent.putExtra("myKeys", myKeys.get(position));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
 
                 mContext.startActivity(intent);
