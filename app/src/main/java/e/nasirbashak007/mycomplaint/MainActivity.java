@@ -15,30 +15,57 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
+
+import org.w3c.dom.Text;
 
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener{
 
-    public static final String ANONYMOUS = "anonymous";
 
-    private FirebaseDatabase myFirebaseDatabase;
-    private DatabaseReference myDatabaseReference;
+    TextView textCat,textDate,textVicName,textDesc;
+    ImageView textScreen;
+    EditText eTextCat,eTextDate,eTextVicName,eTextDesc;
+    Spinner spinner;
+    Button button;
+
+
+
+    public static final String ANONYMOUS = "anonymous";
+    private boolean complaintEnabled;
+
+    public FirebaseDatabase myFirebaseDatabase;
+    public DatabaseReference myDatabaseReference;
+    public ChildEventListener myChildEvenListener;
+
+    private Animation topToBottom;
 
     final int RC_SIGN_IN = 1;
 
-    private FirebaseAuth myFirebaseAuth;
-    private FirebaseAuth.AuthStateListener myFirebaseAuthListener;
+    public FirebaseAuth myFirebaseAuth;
+    public FirebaseAuth.AuthStateListener myFirebaseAuthListener;
     String mUsername;
 
 
@@ -46,22 +73,42 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init();
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        if(!complaintEnabled){
+
+
+
+
+            setEnable(false);
+            //setContentView(R.layout.activity_new_complaint);
+
+
+
+
+        }
+
+
+
+
+
 
         //FirebaseApp.initializeApp(this);
         //FirebaseApp.
+
+
 
         myFirebaseAuth = FirebaseAuth.getInstance();
 
 
          myFirebaseDatabase = FirebaseDatabase.getInstance();
-         myDatabaseReference = myFirebaseDatabase.getReference("message");
+         myDatabaseReference = myFirebaseDatabase.getReference("complaints");
 
-        myDatabaseReference.setValue("Hello, World!");
+
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -101,7 +148,7 @@ public class MainActivity extends AppCompatActivity
                     startActivityForResult(
                             AuthUI.getInstance()
                                     .createSignInIntentBuilder()
-                                    .setIsSmartLockEnabled(false)
+                                    .setIsSmartLockEnabled(true)
                                     .setAvailableProviders(Arrays.asList(
                                             new AuthUI.IdpConfig.GoogleBuilder().build(),
                                             new AuthUI.IdpConfig.EmailBuilder().build()))
@@ -114,6 +161,40 @@ public class MainActivity extends AppCompatActivity
 
             }
         };
+
+
+        myChildEvenListener = new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                Complaint complaint = (Complaint) dataSnapshot.getValue(Complaint.class);
+               // Toast.makeText(getApplicationContext(),complaint+"",Toast.LENGTH_SHORT).show();
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        };
+        myDatabaseReference.addChildEventListener(myChildEvenListener);
 
 
 
@@ -232,11 +313,140 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            Toast.makeText(getApplicationContext(),"show details",Toast.LENGTH_SHORT).show();
+        }else if( id == R.id.nav_newComp){
+            Toast.makeText(getApplicationContext(),"Opening new Complaint",Toast.LENGTH_SHORT).show();
+            complaintEnabled= true;
+
+           // topToBottom = AnimationUtils.loadAnimation(this, R.anim.top_to_bottom);
+            //textScreen.setAnimation(topToBottom);
+            //textScreen.setEnabled(false);
+            setEnable(true);
+
+
+        }else if(id == R.id.nav_newComp){
+            Toast.makeText(getApplicationContext(),"Status of old complaint",Toast.LENGTH_SHORT).show();
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void newComplaint(View view) {
+
+        startActivity(new Intent(this,NewComplaintActivity.class));
+
+    }
+
+    public void submit(View view) {
+        //mUsername
+
+        String cat = eTextCat.getText().toString().trim();
+        String date = eTextDate.getText().toString().trim();
+        String vicName = eTextVicName.getText().toString().trim();
+        String desc = eTextDesc.getText().toString().trim();
+
+        //myRef.push().setValue(friendlyMessage);
+
+        Complaint complaint = new Complaint(mUsername,cat,date,vicName,desc,null);
+        myDatabaseReference.push().setValue(complaint).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(getApplicationContext(),"Data Uploaded Successfully",Toast.LENGTH_SHORT).show();
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getApplicationContext(),e+"",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        myDatabaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                String key = dataSnapshot.getKey();
+                Toast.makeText(getApplicationContext(),"key "+key,Toast.LENGTH_SHORT).show();
+
+
+
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+        startActivity(new Intent(this,NewComplaintActivity.class));
+
+
+
+
+
+    }
+
+    private void init(){
+
+        textCat = (TextView)findViewById(R.id.textViewCat);
+        textDate = (TextView)findViewById(R.id.textViewDate);
+        textVicName = (TextView)findViewById(R.id.textViewVicName);
+        textDesc = (TextView)findViewById(R.id.textViewDesc);
+        textScreen = (ImageView)findViewById(R.id.textView5);
+
+        eTextCat= (EditText)findViewById(R.id.editTextCat);
+        eTextDate= (EditText)findViewById(R.id.editTextDate);
+        eTextVicName= (EditText)findViewById(R.id.editTextVicName);
+        eTextDesc= (EditText)findViewById(R.id.editTextDesc);
+
+        spinner = (Spinner)findViewById(R.id.spinner);
+        button = (Button)findViewById(R.id.buttonSubmit);
+
+
+    }
+
+    private void setEnable(boolean b){
+
+        textCat.setEnabled(b);
+        textDate.setEnabled(b);
+        textVicName.setEnabled(b);
+        textDesc.setEnabled(b);
+
+        eTextCat.setEnabled(b);
+        eTextDate.setEnabled(b);
+        eTextVicName.setEnabled(b);
+        eTextDesc.setEnabled(b);
+
+        spinner.setEnabled(b);
+        button.setEnabled(b);
+
+
+
+
+
+
+    }
+
+
 }

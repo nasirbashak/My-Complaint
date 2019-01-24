@@ -20,22 +20,24 @@ public class Complaint {
     private String name;
     private String category;
     private String date;
+    private String vicName;
     private String desc;
     private String photoUrl;
 
     public Complaint() {
     }
 
-    public Complaint(String name, String category,String date,String desc, String photoUrl) {
+    public Complaint(String name, String category,String date,String vicName,String desc, String photoUrl) {
 
         this.name = name;
         this.category = category;
         this.date = date;
+        this.vicName = vicName;
         this.desc= desc;
         this.photoUrl = photoUrl;
     }
 
-    
+
 
     public String getName() {
         return name;
@@ -43,6 +45,40 @@ public class Complaint {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+
+    public String getVicNameame() {
+        return vicName;
+    }
+
+    public void setVicNameame(String vicName) {
+        this.vicName = vicName;
+    }
+
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public String getPhotoUrl() {

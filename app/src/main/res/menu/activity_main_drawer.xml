@@ -9,6 +9,16 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Profile" />
 
+        <item
+            android:id="@+id/nav_newComp"
+            android:icon="@drawable/common_full_open_on_phone"
+            android:title="New Complaint" />
+
+        <item
+            android:id="@+id/nav_compStatus"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Complaint Status" />
+
     </group>
 
     <item android:title="Communicate">

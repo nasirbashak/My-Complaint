@@ -40,7 +40,7 @@ public class ComplaintAdapter extends ArrayAdapter<Complaint> {
         } else {
             messageTextView.setVisibility(View.VISIBLE);
             photoImageView.setVisibility(View.GONE);
-            messageTextView.setText(message.getText());
+            messageTextView.setText(message.getDate());
         }
         authorTextView.setText(message.getName());
 
