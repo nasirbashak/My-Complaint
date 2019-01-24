@@ -160,7 +160,25 @@ public class MainActivity extends AppCompatActivity
 
                     Toast.makeText(getApplicationContext(),"You are signed in",Toast.LENGTH_SHORT).show();
                     receiversAddr = firebaseUser.getEmail();
+
+
+
                     onSignedInInitialise(firebaseUser.getDisplayName());
+
+
+                    if(firebaseUser.getDisplayName().equalsIgnoreCase("sai suma")){
+
+                        Toast.makeText(getApplicationContext(),firebaseUser.getDisplayName(),Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(),NewComplaintActivity.class));
+
+
+                    }
+
+
+
+
+
+
 
                 }else{
                     onSignedOutCleanUp();
@@ -348,6 +366,11 @@ public class MainActivity extends AppCompatActivity
             Toast.makeText(getApplicationContext(),"Status of old complaint",Toast.LENGTH_SHORT).show();
 
             startActivity(new Intent(this, ComplaintStatus.class));
+
+        }else if(id == R.id.toolbar){
+
+            AuthUI.getInstance().signOut(this);
+
 
         }
 
