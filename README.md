@@ -14,14 +14,14 @@ __First the passenger should Sign in either through gooogle or email. and then t
 
 
 <img src="https://github.com/nasirbashak/My-Complaint/blob/master/Screenshots/ss1.jpeg"/>
-
+__The authorized user can sign up and use the app__
 
 <a href="https://github.com/nasirbashak/My-Complaint.git">SignUp</a>
 
 
 <img src="https://github.com/nasirbashak/My-Complaint/blob/master/Screenshots/ss2.jpeg"/>"/>
 
-
+__the authorized user can submit the complaint and FIR__
 
 <a href="https://github.com/nasirbashak/My-Complaint/blob/master/app/src/main/java/e/nasirbashak007/mycomplaint/Complaint.java">SubmitComplaint</a>
 
@@ -29,7 +29,7 @@ __First the passenger should Sign in either through gooogle or email. and then t
 
 <img src="https://github.com/nasirbashak/My-Complaint/blob/master/Screenshots/ss3.jpeg"/>"/>
 
-
+__the user's profile will be seen and the user can claim the complaint and see the complaint status__
 
 <a href="https://github.com/nasirbashak/My-Complaint/blob/master/app/src/main/res/layout/activity_main.xml">Navigator</a>
 
@@ -37,7 +37,7 @@ __First the passenger should Sign in either through gooogle or email. and then t
 
 <img src="https://github.com/nasirbashak/My-Complaint/blob/master/Screenshots/ss4.jpeg"/>"/>
 
-
+__the user can view his complaint with the specific details__
 
 <a href="https://github.com/nasirbashak/My-Complaint/blob/master/app/src/main/java/e/nasirbashak007/mycomplaint/GalleryActivity.java">ViewComplaint</a>
 
@@ -45,7 +45,7 @@ __First the passenger should Sign in either through gooogle or email. and then t
 
 <img src="https://github.com/nasirbashak/My-Complaint/blob/master/Screenshots/ss5.jpeg"/>"/>
 
-
+__The user gets the email notification for the complaint claimed__
 
 
 <a href="https://github.com/nasirbashak/My-Complaint/blob/master/app/src/main/java/e/nasirbashak007/mycomplaint/ComplaintStatus.java">Notification</a>
