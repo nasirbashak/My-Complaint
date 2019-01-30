@@ -4,6 +4,12 @@ Online registration of complaint for railway passengers
 
 __This app is user friendly, were a passenger can easily and quickly address the issue to the GRP of the respective Railway Station by sending a FIR through the app__
 
+## Contributors
+
+| [<img src="https://avatars3.githubusercontent.com/u/29597317?s=400&v=4" width="110px;"/><br /><sub>Nasir Basha K</sub>](http://www.github.com/nasirbashak/)<br />[💻](https://github.com/nasirbashak/My-Complaint "Code") [📖](https://github.com/nasirbashak/My-Complaint/blob/master/README.md "Documentation") [⚠️](https://github.com/nasirbashak/My-Complaint/graphs/commit-activity "Tests") [🐛](#bugreports "Bug reports") [🎨](#design "Design") [👀](#review "Reviewed Pull Requests") | [<img src="https://avatars0.githubusercontent.com/u/33176709?s=400&v=4" width="110px;"/><br /><sub>Sai Suma</sub>](https://github.com/saisuma98)<br />[💻](https://github.com/nasirbashak/My-Complaint "Code") [📖](https://github.com/nasirbashak/My-Complaint/blob/master/README.md "Documentation") [⚠️](https://github.com/nasirbashak/My-Complaint/graphs/commit-activity "Tests") | [<img src="#" width="110px;"/><br /><sub>person3</sub>]()<br />[💻](#code "Code") [⚠️](#commits "Tests") |  [<img src="#" width="110px;"/><br /><sub>person4</sub>]()<br />[💻](#code "Code") [⚠️](#commits "Tests")  |  [<img src="#" width="110px;"/><br /><sub>person5</sub>]()<br />[💻](#code "Code") [⚠️](#commits "Tests")  |  [<img src="#" width="110px;"/><br /><sub>person6</sub>]()<br />[💻](#code "Code") [⚠️](#commits "Tests")  |  [<img src="#" width="110px;"/><br /><sub>person7</sub>]()<br />[💻](#code "Code") [⚠️](#commits "Tests")  |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+
+
 
 
 # Description of the app
